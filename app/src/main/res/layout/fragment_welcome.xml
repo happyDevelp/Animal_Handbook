@@ -104,18 +104,17 @@
             android:id="@+id/recycleView_welcomeScreen"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            tools:listitem="@layout/item_welcome_recycleview"
+            android:background="#0F3FEA10"
 
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
-            android:background="#0F3FEA10"
-            />
+            tools:listitem="@layout/item_welcome_recycleview" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
