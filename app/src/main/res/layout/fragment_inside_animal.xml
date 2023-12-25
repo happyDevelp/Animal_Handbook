@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:id="@+id/scrollView_inside_animal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,7 +17,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,14 +52,9 @@
                 android:id="@+id/name_animal_inside"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/textAnimalName"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="60dp"
-                android:fontFamily="@font/amaranth"
                 android:text="Brown bear"
-                android:textColor="@color/black"
                 android:textSize="42dp"
                 app:layout_constraintBottom_toTopOf="@+id/cardView_picture"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -66,25 +63,18 @@
 
             <TextView
                 android:id="@+id/describe_animal_inside"
+                style="@style/textAnimalContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="#08000000"
-                android:fontFamily="@font/acme"
-                android:lineSpacingExtra="8sp"
                 android:text="SO this Bear is so cute and I want to have the same at home. Хоч ведмедя і величають найбільшим хижаком у Європі, його раціон на 40-60% складається з їжі рослинного походження — трави, пагонів, коріння, горіхів, плодів дерев та ягід. Ведмідь також споживає комах, рептилій і ссавців. Але особливі ласощі для нього — мед. Гострий нюх тварини може відчути його за кілометри та привести або до диких бджіл, або до чиєїсь пасіки.  В начале текущей недели баварское земельное ведомство по охране окружающей среды сообщило об очередном свежем свидетельстве нахождения бурых медведей на территории этой южно-германской федеральной земли.Как говорится в заявлении ведомства, опубликованном в понедельник, 8 мая, накануне бурый медведь попал в фотоловушку, установленную для мониторинга диких животных в одном из лесных массивов района Траунштайн в Верхней Баварии. Свежий снимок пока не опубликован, но ранее за последние несколько лет автоматическими камерами в Баварии было сделано уже пять таких фотографий - в частности, в начале мая 2022 года около Гармиш-Партенкирхена (первый снимок выше), а также около Бад-Тёльца в июле прошлого года.Полученные данные пока не позволяют сделать вывод о том, идет ли речь о каком-либо из медведей, замеченных в Баварии ранее, или о новом животном, зашедшем сюда из соседних приграничных районов Австрии.Всего с октября 2019 года в Баварии было зафиксировано два десятка свидетельств присутствия здесь бурых медведей - снимков фотоловушек, отпечатков лап, следов слюны, экскрементов и других фактов. В частности, в апреле 2023 года на пастбище в округе Розенхайм было обнаружено несколько задранных овец.До осени 2019 года последний раз бурый медведь наблюдался в Баварии в 2006 году - после почти 170-летнего перерыва. Речь идет о ставшем знаменитом самце по кличке Бруно. Он перемещался по приграничным районам Германии и Австрии, нападал в Баварии на домашних животных и один раз даже забрался в курятник."
-                android:textAlignment="textStart"
-                android:textColor="#2B1203"
-                android:textSize="20sp"
+
+                android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView_picture"
-                app:layout_constraintVertical_bias="0.0"></TextView>
+                app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </ScrollView>
