@@ -19,7 +19,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_type_animal" />
+        tools:listitem="@layout/item_animal_list" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
