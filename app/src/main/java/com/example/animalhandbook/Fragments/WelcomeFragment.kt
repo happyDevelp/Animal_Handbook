@@ -41,28 +41,27 @@ class WelcomeFragment : Fragment() {
 
         db = DataBase.getInstance(requireContext())
 
-       CoroutineScope(Dispatchers.Main).launch {
-           binding.recycleViewWelcomeScreen.apply {
-               val typesList = getAllTypes()
-               val adapter = WelcomeAdapter()
-               binding.recycleViewWelcomeScreen.adapter = adapter
+        CoroutineScope(Dispatchers.Main).launch {
 
-               typesList.observe(viewLifecycleOwner) {
-                   adapter.data = it
-               }
+            val typesList = getAllTypes()
+            val adapter = WelcomeAdapter()
+            binding.recycleViewWelcomeScreen.adapter = adapter
 
-           }
-       }
+            typesList.observe(viewLifecycleOwner) {
+                adapter.data = it
+
+            }
+        }
     }
 
-    private suspend fun pushType(type: TypesEntity){
-        return withContext(Dispatchers.IO){
+    private suspend fun pushType(type: TypesEntity) {
+        return withContext(Dispatchers.IO) {
             db.typesDAO.insertType(type)
         }
     }
 
     private suspend fun getAllTypes(): LiveData<List<TypesEntity>> {
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             db.typesDAO.getAllTypes()
         }
     }

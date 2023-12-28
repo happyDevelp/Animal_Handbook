@@ -24,9 +24,7 @@ class WelcomeAdapter(): RecyclerView.Adapter<WelcomeAdapter.ViewHolder>() {
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.item_welcome_recycleview, parent, false)
-        return ViewHolder(view)
+        return ViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -36,7 +34,7 @@ class WelcomeAdapter(): RecyclerView.Adapter<WelcomeAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int = data.size
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class ViewHolder private constructor(itemView: View): RecyclerView.ViewHolder(itemView){
         private val name: TextView = itemView.findViewById(R.id.name_of_animal_welcome)
         private val description: TextView = itemView.findViewById(R.id.description_of_animal_welcome)
         private val image: ImageView = itemView.findViewById(R.id.image_animal_welcome)
@@ -48,6 +46,16 @@ class WelcomeAdapter(): RecyclerView.Adapter<WelcomeAdapter.ViewHolder>() {
             image.setImageResource(imageResource)
 
         }
+
+        companion object {
+            fun from(parent: ViewGroup): ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val view = layoutInflater.inflate(R.layout.item_welcome_recycleview, parent, false)
+                return ViewHolder(view)
+            }
+        }
+
+
     }
 
 }
