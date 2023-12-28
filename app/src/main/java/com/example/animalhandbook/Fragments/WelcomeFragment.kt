@@ -48,7 +48,7 @@ class WelcomeFragment : Fragment() {
             binding.recycleViewWelcomeScreen.adapter = adapter
 
             typesList.observe(viewLifecycleOwner) {
-                adapter.data = it
+                adapter.submitList(it)
 
             }
         }
