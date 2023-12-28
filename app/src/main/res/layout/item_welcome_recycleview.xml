@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="2dp"
-    app:cardBackgroundColor="#122E911A"
-    app:cardCornerRadius="15dp"
-    app:cardElevation="2dp"
-    app:cardMaxElevation="5dp"
-    app:contentPadding="4dp">
+    android:layout_margin="4dp"
+    app:cardBackgroundColor="#BBDDB3"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="5dp"
+    app:cardMaxElevation="8dp"
+    app:contentPadding="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/image_animal_welcome"
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_marginStart="8dp"
@@ -42,12 +42,12 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/image_animal_welcome"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Predators" />
 
         <TextView
-            android:id="@+id/describe_of_animal_welcome"
+            android:id="@+id/description_of_animal_welcome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -58,7 +58,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
 
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/image_animal_welcome"
             app:layout_constraintTop_toBottomOf="@+id/name_of_animal_welcome"
             tools:text="Хижаки - це розмаїта група тварин, яка відзначається... " />
     </androidx.constraintlayout.widget.ConstraintLayout>

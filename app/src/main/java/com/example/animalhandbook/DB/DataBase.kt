@@ -22,7 +22,7 @@ abstract class DataBase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         DataBase::class.java,
-                        "sleep_history_database"
+                        "types_database"
                     ).fallbackToDestructiveMigration()
                         .build()
                     INSTANCE = instance
@@ -31,5 +31,6 @@ abstract class DataBase : RoomDatabase() {
                 return instance
             }
         }
+
     }
 }

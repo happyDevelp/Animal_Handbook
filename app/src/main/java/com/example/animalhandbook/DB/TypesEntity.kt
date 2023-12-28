@@ -4,18 +4,17 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "types_animals")
+@Entity(tableName = "types_animal")
 data class TypesEntity (
-
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 
-    @ColumnInfo(name = "animal_name")
+    @ColumnInfo(name = "types_name")
     val name: String,
 
-    @ColumnInfo(name = "animal_description")
+    @ColumnInfo(name = "types_description")
     val description: String,
 
-    @ColumnInfo(name = "pic_id")
-    val picID: Int
+    @ColumnInfo(name = "types_pic_name")
+    val picName: String
 )
