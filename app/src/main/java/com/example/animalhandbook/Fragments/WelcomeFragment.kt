@@ -1,5 +1,6 @@
 package com.example.animalhandbook.Fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,7 +19,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-
 class WelcomeFragment : Fragment() {
     private lateinit var binding: FragmentWelcomeBinding
     private lateinit var db: DataBase
@@ -31,41 +31,48 @@ class WelcomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.testBtn.setOnClickListener {
-            findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInsideAnimalFragment())
-        }
-
         db = DataBase.getInstance(requireContext())
 
         CoroutineScope(Dispatchers.Main).launch {
-
             val typesList = getAllTypes()
+
             val adapter = WelcomeAdapter()
             binding.recycleViewWelcomeScreen.adapter = adapter
 
-            typesList.observe(viewLifecycleOwner) {
-                adapter.submitList(it)
+
+            typesList.observe(viewLifecycleOwner) { adapter.submitList(it) }
 
                 adapter.setOnItemClickListener(object : WelcomeAdapter.onItemClickListener{ //object : WelcomeAdapter.onItemClickListener - create anonymous object (створення анонімного об'єкту)
                     override fun onItemClick(position: Int) {
+                        CoroutineScope(Dispatchers.Main).launch {
+                            val type = getTypeByID(position)
+                            findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToAnimalListFragment(type.id))
 
-                        findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInsideAnimalFragment())
+                        }
                     }
 
-                })
-            }
+            })
         }
+
     }
 
-    private suspend fun pushType(type: TypesEntity) {
-        return withContext(Dispatchers.IO) {
-            db.typesDAO.insertType(type)
-        }
-    }
 
     private suspend fun getAllTypes(): LiveData<List<TypesEntity>> {
         return withContext(Dispatchers.IO) {
             db.typesDAO.getAllTypes()
         }
     }
+
+    private suspend fun getTypeByID(id: Int): TypesEntity {
+        return withContext(Dispatchers.IO) {
+            db.typesDAO.getByID(id)
+        }
+    }
+
+
+    /* private suspend fun pushType(type: TypesEntity) {
+       return withContext(Dispatchers.IO) {
+           db.typesDAO.insertType(type)
+       }
+   }*/
 }

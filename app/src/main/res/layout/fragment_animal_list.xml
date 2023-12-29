@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1D9F5329">
+    android:background="#1D9F5329"
+    tools:context=".Fragments.AnimalListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleView_predator"
+        android:id="@+id/recycleView_animal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#0F3FEA10"

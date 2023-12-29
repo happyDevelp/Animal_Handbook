@@ -15,7 +15,20 @@
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
-            android:id="@+id/action_welcomeFragment_to_insideAnimalFragment"
-            app:destination="@id/insideAnimalFragment" />
+            android:id="@+id/action_welcomeFragment_to_animalListFragment"
+            app:destination="@id/animalListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/animalListFragment"
+        android:name="com.example.animalhandbook.Fragments.AnimalListFragment"
+        android:label="AnimalListFragment"
+        tools:layout="@layout/fragment_animal_list" >
+        <action
+            android:id="@+id/action_animalListFragment_to_insideAnimalFragment"
+            app:destination="@id/insideAnimalFragment" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>/>
+
 </navigation>
