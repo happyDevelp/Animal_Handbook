@@ -23,11 +23,7 @@ class WelcomeFragment : Fragment() {
     private lateinit var binding: FragmentWelcomeBinding
     private lateinit var db: DataBase
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentWelcomeBinding.inflate(layoutInflater)
         return binding.root
     }
