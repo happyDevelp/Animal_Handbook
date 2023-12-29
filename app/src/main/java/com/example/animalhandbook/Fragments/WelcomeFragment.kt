@@ -50,6 +50,13 @@ class WelcomeFragment : Fragment() {
             typesList.observe(viewLifecycleOwner) {
                 adapter.submitList(it)
 
+                adapter.setOnItemClickListener(object : WelcomeAdapter.onItemClickListener{ //object : WelcomeAdapter.onItemClickListener - create anonymous object (створення анонімного об'єкту)
+                    override fun onItemClick(position: Int) {
+
+                        findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToInsideAnimalFragment())
+                    }
+
+                })
             }
         }
     }
