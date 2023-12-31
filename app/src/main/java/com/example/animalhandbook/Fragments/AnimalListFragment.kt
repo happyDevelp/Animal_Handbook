@@ -25,8 +25,6 @@ class AnimalListFragment : Fragment() {
     private lateinit var binding: FragmentAnimalListBinding
     private lateinit var db: DataBase
 
-    //AnimalListFragmentArgs this class generate automatically cuz I created an argument in navigation. Safe Args make everything instead of us
-    private val args: AnimalListFragmentArgs by navArgs()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentAnimalListBinding.inflate(layoutInflater)
         return binding.root
@@ -35,7 +33,6 @@ class AnimalListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         db = DataBase.getInstance(requireContext())
-        val id = args.id
 
         CoroutineScope(Dispatchers.Main).launch {
             val animalList = getAllAnimals()
@@ -48,7 +45,7 @@ class AnimalListFragment : Fragment() {
             adapter.setOnItemClickListener(object : AnimalAdapter.onItemClickListener{ //object : WelcomeAdapter.onItemClickListener - create anonymous object (створення анонімного об'єкту)
                 override fun onItemClick(position: Int) {
                     CoroutineScope(Dispatchers.Main).launch {
-                        findNavController().navigate(AnimalListFragmentDirections.actionAnimalListFragmentToInsideAnimalFragment())
+                        findNavController().navigate(AnimalListFragmentDirections.actionAnimalListFragmentToInsideAnimalFragment(position))
 
                     }
                 }

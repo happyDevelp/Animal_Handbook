@@ -42,8 +42,7 @@ class WelcomeFragment : Fragment() {
                 adapter.setOnItemClickListener(object : WelcomeAdapter.onItemClickListener{ //object : WelcomeAdapter.onItemClickListener - create anonymous object (створення анонімного об'єкту)
                     override fun onItemClick(position: Int) {
                         CoroutineScope(Dispatchers.Main).launch {
-                            val type = getTypeByID(position)
-                            findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToAnimalListFragment(type.id))
+                            findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToAnimalListFragment())
 
                         }
                     }

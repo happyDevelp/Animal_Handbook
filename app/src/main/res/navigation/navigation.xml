@@ -8,7 +8,10 @@
         android:id="@+id/insideAnimalFragment"
         android:name="com.example.animalhandbook.Fragments.InsideAnimalFragment"
         android:label="fragment_inside_animal"
-        tools:layout="@layout/fragment_inside_animal" />
+        tools:layout="@layout/fragment_inside_animal" >
+        <argument android:name="id"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.animalhandbook.Fragments.WelcomeFragment"
@@ -26,9 +29,6 @@
         <action
             android:id="@+id/action_animalListFragment_to_insideAnimalFragment"
             app:destination="@id/insideAnimalFragment" />
-        <argument
-            android:name="id"
-            app:argType="integer" />
     </fragment>/>
 
 </navigation>

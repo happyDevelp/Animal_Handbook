@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
-    app:cardBackgroundColor="#D6CDC7"
+    app:cardBackgroundColor="#DACCC3"
     app:cardCornerRadius="15dp"
     app:cardElevation="2dp"
     app:cardMaxElevation="5dp"
@@ -39,7 +39,8 @@
                 android:id="@+id/animal_image_inside"
                 android:layout_width="170dp"
                 android:layout_height="170dp"
-                tools:src="@drawable/bear_buryi" />
+                tools:src="@drawable/bear_buryi"
+                android:scaleType="centerCrop"/>
 
         </androidx.cardview.widget.CardView>
 
