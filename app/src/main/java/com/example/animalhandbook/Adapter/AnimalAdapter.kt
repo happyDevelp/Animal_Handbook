@@ -39,7 +39,7 @@ class AnimalAdapter :
     }
 
 
-    class ViewHolder (itemView: View, clickListener: onItemClickListener, /*private val binding: ItemAnimalListBinding*/) :
+    class ViewHolder (itemView: View, clickListener: onItemClickListener) :
         RecyclerView.ViewHolder(itemView) {
         private val name: TextView = itemView.findViewById(R.id.animal_name_inside)
         private val description: TextView = itemView.findViewById(R.id.animal_describe_inside)
@@ -55,8 +55,9 @@ class AnimalAdapter :
         fun bind(item: AnimalEntity) {
             name.text = item.name
             if(item.description.length >= 50){
-                description.text = item.description.substring(0..100) + "..."
-            }
+                val newDescription = itemView.resources.getString(R.string.trim_text, item.description.substring(0..100))
+                description.text = newDescription
+            } else description.text = item.description
 
             val imageResource = itemView.resources.getIdentifier(item.picName, "drawable", itemView.context.packageName)
             image.setImageResource(imageResource)
