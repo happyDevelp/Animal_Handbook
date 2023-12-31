@@ -4,11 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.animalhandbook.DB.animals.AnimalDAO
+import com.example.animalhandbook.DB.animals.AnimalEntity
+import com.example.animalhandbook.DB.types.TypesDAO
+import com.example.animalhandbook.DB.types.TypesEntity
 
 
-@Database(entities = [TypesEntity::class], version = 1, exportSchema = false)
+@Database(entities = [TypesEntity::class, AnimalEntity::class], version = 3, exportSchema = false)
 abstract class DataBase : RoomDatabase() {
     abstract val typesDAO: TypesDAO
+    abstract val animalDAO: AnimalDAO
+
 
     companion object {
         @Volatile

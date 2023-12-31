@@ -1,4 +1,4 @@
-package com.example.animalhandbook.DB
+package com.example.animalhandbook.DB.types
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -11,10 +11,10 @@ interface TypesDAO {
     @Insert
     fun insertType(typesEntity: TypesEntity)
 
-    @Query("SELECT * from types_animal")
+    @Query("SELECT * from type_table")
     fun getAllTypes(): LiveData<List<TypesEntity>>
 
-    @Query("SELECT * from types_animal WHERE id = :id")
+    @Query("SELECT * from type_table WHERE id = :id")
     fun getByID(id: Int): TypesEntity
 
 }

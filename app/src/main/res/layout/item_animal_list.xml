@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
-    app:cardBackgroundColor="#17EA0606"
+    app:cardBackgroundColor="#D6CDC7"
     app:cardCornerRadius="15dp"
     app:cardElevation="2dp"
     app:cardMaxElevation="5dp"
@@ -22,7 +24,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="60dp"
+            android:layout_marginBottom="16dp"
             app:cardCornerRadius="6dp"
             app:cardElevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -34,7 +36,7 @@
             app:layout_constraintVertical_bias="0.0">
 
             <ImageView
-                android:id="@+id/image_item_list"
+                android:id="@+id/animal_image_inside"
                 android:layout_width="170dp"
                 android:layout_height="170dp"
                 tools:src="@drawable/bear_buryi" />

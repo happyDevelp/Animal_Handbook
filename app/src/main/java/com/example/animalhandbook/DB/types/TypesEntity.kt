@@ -1,20 +1,20 @@
-package com.example.animalhandbook.DB
+package com.example.animalhandbook.DB.types
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "types_animal")
+@Entity(tableName = "type_table")
 data class TypesEntity (
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 
-    @ColumnInfo(name = "types_name")
+    @ColumnInfo(name = "type_name")
     val name: String,
 
-    @ColumnInfo(name = "types_description")
+    @ColumnInfo(name = "type_description")
     val description: String,
 
-    @ColumnInfo(name = "types_pic_name")
+    @ColumnInfo(name = "type_pic_name")
     val picName: String
 )

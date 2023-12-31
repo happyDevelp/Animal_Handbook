@@ -7,16 +7,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.animalhandbook.DB.types.TypesEntity
+import com.example.animalhandbook.DB.animals.AnimalEntity
 import com.example.animalhandbook.R
- //indicate who clicked (from which fragment). We set it in next method setOnItemClickListener()
-class WelcomeAdapter :
-    androidx.recyclerview.widget.ListAdapter<TypesEntity, WelcomeAdapter.ViewHolder>(TypesDiffCallBack()) {
+import com.example.animalhandbook.databinding.ItemAnimalListBinding
+
+//indicate who clicked (from which fragment). We set it in next method setOnItemClickListener()
+class AnimalAdapter :
+    androidx.recyclerview.widget.ListAdapter<AnimalEntity, AnimalAdapter.ViewHolder>(AnimalDiffCallBack()) {
 
     interface onItemClickListener {
         fun onItemClick(position: Int)
     }
-     lateinit var myListener: onItemClickListener
+    lateinit var myListener: onItemClickListener
 
 
     //Отже коли я викликаю об'єкт цього інтерфейсу, він знає (clickListener) інформацію з якого саме фрагменту я був викликаний
@@ -26,7 +28,7 @@ class WelcomeAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val view = layoutInflater.inflate(R.layout.item_welcome_recycleview, parent, false)
+        val view = layoutInflater.inflate(R.layout.item_animal_list, parent, false)
 
         return ViewHolder(view, myListener)
     }
@@ -37,11 +39,11 @@ class WelcomeAdapter :
     }
 
 
-    class ViewHolder (itemView: View, clickListener: onItemClickListener) :
+    class ViewHolder (itemView: View, clickListener: onItemClickListener, /*private val binding: ItemAnimalListBinding*/) :
         RecyclerView.ViewHolder(itemView) {
-        private val name: TextView = itemView.findViewById(R.id.name_of_animal_welcome)
-        private val description: TextView = itemView.findViewById(R.id.description_of_animal_welcome)
-        private val image: ImageView = itemView.findViewById(R.id.image_animal_welcome)
+        private val name: TextView = itemView.findViewById(R.id.animal_name_inside)
+        private val description: TextView = itemView.findViewById(R.id.animal_describe_inside)
+        private val image: ImageView = itemView.findViewById(R.id.animal_image_inside)
 
 
         init {
@@ -50,33 +52,27 @@ class WelcomeAdapter :
             }
         }
 
-        fun bind(item: TypesEntity) {
+        fun bind(item: AnimalEntity) {
             name.text = item.name
-            description.text = item.description
+            if(item.description.length >= 50){
+                description.text = item.description.substring(0..100) + "..."
+            }
+
             val imageResource = itemView.resources.getIdentifier(item.picName, "drawable", itemView.context.packageName)
             image.setImageResource(imageResource)
 
         }
 
-              /*  companion object {
-                    fun from(parent: ViewGroup): ViewHolder {
-                        val layoutInflater = LayoutInflater.from(parent.context)
-                        val view = layoutInflater.inflate(R.layout.item_welcome_recycleview, parent, false)
-
-                        return ViewHolder(view, myListener)
-                    }
-                }*/
-
     }
 
 }
 
-class TypesDiffCallBack : DiffUtil.ItemCallback<TypesEntity>() {
-    override fun areItemsTheSame(oldItem: TypesEntity, newItem: TypesEntity): Boolean {
+class AnimalDiffCallBack : DiffUtil.ItemCallback<AnimalEntity>() {
+    override fun areItemsTheSame(oldItem: AnimalEntity, newItem: AnimalEntity): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: TypesEntity, newItem: TypesEntity): Boolean {
+    override fun areContentsTheSame(oldItem: AnimalEntity, newItem: AnimalEntity): Boolean {
         return oldItem == newItem
     }
 

@@ -1,18 +1,15 @@
 package com.example.animalhandbook.Fragments
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.animalhandbook.Adapter.WelcomeAdapter
 import com.example.animalhandbook.DB.DataBase
-import com.example.animalhandbook.DB.TypesEntity
+import com.example.animalhandbook.DB.types.TypesEntity
 import com.example.animalhandbook.databinding.FragmentWelcomeBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
