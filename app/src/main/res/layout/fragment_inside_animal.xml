@@ -41,7 +41,7 @@
                     android:id="@+id/image_animal_inside_fragment"
                     android:layout_width="360dp"
                     android:layout_height="360dp"
-                    tools:src="@drawable/bear_buryi"
+                    tools:src="@drawable/photo_bear_buryi"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

@@ -1,6 +1,7 @@
 package com.example.animalhandbook.DB
 
 import android.content.Context
+import androidx.room.AutoMigration
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -10,7 +11,7 @@ import com.example.animalhandbook.DB.types.TypesDAO
 import com.example.animalhandbook.DB.types.TypesEntity
 
 
-@Database(entities = [TypesEntity::class, AnimalEntity::class], version = 3, exportSchema = false)
+@Database(entities = [TypesEntity::class, AnimalEntity::class], /*autoMigrations = [AutoMigration(from = 3, to = 4)],*/ version = 4, exportSchema = true)
 abstract class DataBase : RoomDatabase() {
     abstract val typesDAO: TypesDAO
     abstract val animalDAO: AnimalDAO

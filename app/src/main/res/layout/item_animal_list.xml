@@ -39,8 +39,8 @@
                 android:id="@+id/animal_image_inside"
                 android:layout_width="170dp"
                 android:layout_height="170dp"
-                tools:src="@drawable/bear_buryi"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                tools:src="@drawable/photo_bear_buryi" />
 
         </androidx.cardview.widget.CardView>
 

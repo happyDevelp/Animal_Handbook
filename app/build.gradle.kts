@@ -17,6 +17,19 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
+     /*   javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["room.schemaLocation": "$C:/Oles/Projects/Android/Android Studio/AnimalHandbook/app/schemas".toString()]
+            }
+        }*/
+
+       /* kapt {
+            arguments {
+                arg("room.schemaLocation", "$C:/Oles/Projects/Android/Android Studio/AnimalHandbook/app/schemas")
+            }
+        }*/
     }
 
 

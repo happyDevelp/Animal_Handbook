@@ -24,6 +24,7 @@ import kotlinx.coroutines.withContext
 class AnimalListFragment : Fragment() {
     private lateinit var binding: FragmentAnimalListBinding
     private lateinit var db: DataBase
+    private val args: AnimalListFragmentArgs by navArgs()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentAnimalListBinding.inflate(layoutInflater)
@@ -35,7 +36,7 @@ class AnimalListFragment : Fragment() {
         db = DataBase.getInstance(requireContext())
 
         CoroutineScope(Dispatchers.Main).launch {
-            val animalList = getAllAnimals()
+            val animalList = getAllAnimalByType(args.type)
 
             val adapter = AnimalAdapter()
             binding.recycleViewAnimal.adapter = adapter
@@ -43,10 +44,9 @@ class AnimalListFragment : Fragment() {
             animalList.observe(viewLifecycleOwner) { adapter.submitList(it) }
 
             adapter.setOnItemClickListener(object : AnimalAdapter.onItemClickListener{ //object : WelcomeAdapter.onItemClickListener - create anonymous object (створення анонімного об'єкту)
-                override fun onItemClick(position: Int) {
+                override fun onItemClick(name: String) {
                     CoroutineScope(Dispatchers.Main).launch {
-                        findNavController().navigate(AnimalListFragmentDirections.actionAnimalListFragmentToInsideAnimalFragment(position))
-
+                        findNavController().navigate(AnimalListFragmentDirections.actionAnimalListFragmentToInsideAnimalFragment(name))
                     }
                 }
 
@@ -61,9 +61,16 @@ class AnimalListFragment : Fragment() {
         }
     }
 
+    private suspend fun getAllAnimalByType(type: String): LiveData<List<AnimalEntity>> {
+        return withContext(Dispatchers.IO){
+            db.animalDAO.getAllAnimalByType(type)
+        }
+
+    }
+
     private suspend fun getAnimalByID(id: Int): AnimalEntity {
         return withContext(Dispatchers.IO) {
-            db.animalDAO.getByID(id)
+            db.animalDAO.getAnimalByID(id)
         }
     }
 

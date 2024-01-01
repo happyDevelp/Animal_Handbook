@@ -9,6 +9,9 @@ data class AnimalEntity (
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
 
+    @ColumnInfo(name = "animal_type")
+    val type: String,
+
     @ColumnInfo(name = "animal_name")
     val name: String,
 

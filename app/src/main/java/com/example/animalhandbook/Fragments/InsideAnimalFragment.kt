@@ -29,12 +29,12 @@ class InsideAnimalFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val id = args.id
+        val name = args.name
         db = DataBase.getInstance(requireContext())
 
 
         CoroutineScope(Dispatchers.Main).launch{
-            val currentAnimal = getAnimalByID(id)
+            val currentAnimal = getAnimalByName(name)
 
             binding.nameAnimalInside.text = currentAnimal.name
             binding.describeAnimalInside.text = currentAnimal.description
@@ -47,8 +47,15 @@ class InsideAnimalFragment : Fragment() {
 
     private suspend fun getAnimalByID(id: Int): AnimalEntity {
         return withContext(Dispatchers.IO){
-            db.animalDAO.getByID(id)
+            db.animalDAO.getAnimalByID(id)
         }
-
     }
+
+    private suspend fun getAnimalByName(name: String): AnimalEntity {
+        return withContext(Dispatchers.IO){
+            db.animalDAO.getAnimalByName(name)
+        }
+    }
+
+
 }

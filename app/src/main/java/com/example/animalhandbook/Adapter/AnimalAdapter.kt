@@ -16,7 +16,7 @@ class AnimalAdapter :
     androidx.recyclerview.widget.ListAdapter<AnimalEntity, AnimalAdapter.ViewHolder>(AnimalDiffCallBack()) {
 
     interface onItemClickListener {
-        fun onItemClick(position: Int)
+        fun onItemClick(name: String)
     }
     lateinit var myListener: onItemClickListener
 
@@ -48,7 +48,7 @@ class AnimalAdapter :
 
         init {
             itemView.setOnClickListener {
-                clickListener.onItemClick(adapterPosition)
+                clickListener.onItemClick(name.text.toString())
             }
         }
 

@@ -9,8 +9,9 @@
         android:name="com.example.animalhandbook.Fragments.InsideAnimalFragment"
         android:label="fragment_inside_animal"
         tools:layout="@layout/fragment_inside_animal" >
-        <argument android:name="id"
-            app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
@@ -29,6 +30,9 @@
         <action
             android:id="@+id/action_animalListFragment_to_insideAnimalFragment"
             app:destination="@id/insideAnimalFragment" />
+        <argument
+            android:name="type"
+            app:argType="string" />
     </fragment>/>
 
 </navigation>
