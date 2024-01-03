@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
+
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,18 +13,19 @@
     android:orientation="horizontal"
     >
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header_welcome"
         android:layout_width="match_parent"
-        android:layout_height="115dp"
+        android:layout_height="75dp"
+        android:background="#45BD7E21"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:background="#34BD7E21">
-
+        app:layout_constraintVertical_bias="0.0">
 
 
         <TextView
@@ -50,10 +55,10 @@
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.584"
+            app:layout_constraintHorizontal_bias="0.719"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.722" />
+            app:layout_constraintVertical_bias="0.976" />
 
         <ImageView
             android:layout_width="69dp"
@@ -74,11 +79,10 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#3739BA1E"
+        android:background="#B290AF8A"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -103,6 +107,7 @@
             app:layout_constraintHorizontal_bias="0.08"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleView_welcomeScreen"
@@ -131,6 +136,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,11 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.animalhandbook.DB.animals.AnimalEntity
 import com.example.animalhandbook.R
 import com.example.animalhandbook.databinding.ItemAnimalListBinding
+import org.w3c.dom.Text
 
 //indicate who clicked (from which fragment). We set it in next method setOnItemClickListener()
 class AnimalAdapter :
@@ -38,13 +40,12 @@ class AnimalAdapter :
         holder.bind(currentItem)
     }
 
-
     class ViewHolder (itemView: View, clickListener: onItemClickListener) :
         RecyclerView.ViewHolder(itemView) {
         private val name: TextView = itemView.findViewById(R.id.animal_name_inside)
         private val description: TextView = itemView.findViewById(R.id.animal_describe_inside)
         private val image: ImageView = itemView.findViewById(R.id.animal_image_inside)
-
+        private val background: CardView = itemView.findViewById(R.id.item_container)
 
         init {
             itemView.setOnClickListener {
@@ -62,6 +63,8 @@ class AnimalAdapter :
             val imageResource = itemView.resources.getIdentifier(item.picName, "drawable", itemView.context.packageName)
             image.setImageResource(imageResource)
 
+        /*    if (item.type == "Artiodactyl")
+            background.setBackgroundColor(itemView.resources.getColor(R.color.artodactyl, *//*itemView.resources*//*))*/
         }
 
     }

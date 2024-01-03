@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="predador">#CDBEB3</color>
+    <color name="artodactyl">#B3B8A1</color>
+    <color name="artodactyl_picture">#C7CDB3</color>
+    <color name="tabBackgroundColor">#EEE</color>
+    <color name="blue">#00F</color>
+
 </resources>
