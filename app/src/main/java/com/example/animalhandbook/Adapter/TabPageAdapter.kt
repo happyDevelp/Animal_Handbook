@@ -1,3 +1,4 @@
+/*
 package com.example.animalhandbook.Adapter
 
 import androidx.fragment.app.Fragment
@@ -18,4 +19,5 @@ class TabPageAdapter(activity: FragmentActivity, private val tabCount: Int): Fra
             else -> WelcomeFragment()
         }
     }
-}
+
+}*/

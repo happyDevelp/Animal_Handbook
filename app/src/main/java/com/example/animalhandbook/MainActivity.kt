@@ -2,10 +2,20 @@ package com.example.animalhandbook
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.viewpager2.widget.ViewPager2
-import com.example.animalhandbook.Adapter.TabPageAdapter
+import android.view.MenuItem
+import android.view.View
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import com.example.animalhandbook.Fragments.AnimalListFragment
+import com.example.animalhandbook.Fragments.InsideAnimalFragment
+import com.example.animalhandbook.Fragments.Tab.FavouritesFragment
+import com.example.animalhandbook.Fragments.Tab.SettingsFragment
+import com.example.animalhandbook.Fragments.WelcomeFragment
+import com.example.animalhandbook.Fragments.WelcomeFragmentDirections
 import com.example.animalhandbook.databinding.ActivityMainBinding
-import com.google.android.material.tabs.TabLayout
+import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.nio.file.attribute.FileAttributeView
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
@@ -14,31 +24,24 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setUpTabBar()
+        binding.navView.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.navigation_favourites -> replace(FavouritesFragment())
+                R.id.navigation_home -> replace(WelcomeFragment())
+                R.id.navigation_settings -> replace(SettingsFragment())
+            }
+            true
+        }
 
     }
 
-    private fun setUpTabBar() {
-        val adapter = TabPageAdapter(this, binding.mainTab.tabCount)
-        binding.viewPager.adapter = adapter
-
-        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                binding.mainTab.selectTab(binding.mainTab.getTabAt(position))
-            }
-        })
-
-        binding.mainTab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                binding.viewPager.currentItem = tab.position
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
-
-        })
+    private fun replace(fragment: Fragment) {
+            val fragmentManager = supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.nav_host_fragment, fragment)
+            fragmentTransaction.commit()
 
     }
+
+
 }
