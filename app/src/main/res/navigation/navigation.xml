@@ -21,12 +21,6 @@
         <action
             android:id="@+id/action_welcomeFragment_to_animalListFragment"
             app:destination="@id/animalListFragment" />
-        <action
-            android:id="@+id/action_welcomeFragment_to_favouritesFragment"
-            app:destination="@id/favouritesFragment" />
-        <action
-            android:id="@+id/action_welcomeFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/animalListFragment"
@@ -44,19 +38,10 @@
         android:id="@+id/favouritesFragment"
         android:name="com.example.animalhandbook.Fragments.Tab.FavouritesFragment"
         android:label="fragment_favourites"
-        tools:layout="@layout/fragment_favourites" >
-        <action
-            android:id="@+id/action_favouritesFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_favourites" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.animalhandbook.Fragments.Tab.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" >
-        <action
-            android:id="@+id/action_settingsFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
-    </fragment>/>
-
+        tools:layout="@layout/fragment_settings" />
 </navigation>

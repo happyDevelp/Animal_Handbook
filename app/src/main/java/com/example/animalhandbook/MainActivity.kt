@@ -7,10 +7,13 @@ import android.view.View
 import androidx.core.app.TaskStackBuilder
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.example.animalhandbook.Fragments.AnimalListFragment
 import com.example.animalhandbook.Fragments.InsideAnimalFragment
 import com.example.animalhandbook.Fragments.Tab.FavouritesFragment
@@ -23,36 +26,24 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.nio.file.attribute.FileAttributeView
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
-    lateinit var drawerLayout: DrawerLayout
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var bottomView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        bottomView = binding.bottomNavigation
 
-        drawerLayout = binding.drawerLayout
-
-        val appBarConfiguration = AppBarConfiguration(R.id.navigation_favourites, R.id.navigation_settings)
-
-
-        val navController = this.findNavController(R.id.nav_host_fragment)
-        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
-        NavigationUI.setupWithNavController(binding.navView, navController)
+        //Link to XML file where NavHostFragment is located
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        bottomView.setupWithNavController(navController)
 
 
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = this.findNavController(R.id.nav_host_fragment)
-        return NavigationUI.navigateUp(navController, drawerLayout)
-    }
-
-
-    private fun replace(fragment: Fragment) {
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.nav_host_fragment, fragment)
-        fragmentTransaction.commit()
+        //try to implement when tap second time on the same destination
+       /* navController.addOnDestinationChangedListener{destination ->
+            if ( == )
+        }*/
 
     }
 

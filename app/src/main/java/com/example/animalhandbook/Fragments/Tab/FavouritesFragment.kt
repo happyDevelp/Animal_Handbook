@@ -18,9 +18,7 @@ class FavouritesFragment : Fragment() {
     ): View? {
         binding = FragmentFavouritesBinding.inflate(layoutInflater)
 
-        binding.favTestButton.setOnClickListener {
-            findNavController().navigate(FavouritesFragmentDirections.actionFavouritesFragmentToWelcomeFragment())
-        }
+
 
 
         return binding.root
