@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         bottomView.setupWithNavController(navController)
 
 
+
         //try to implement when tap second time on the same destination
        /* navController.addOnDestinationChangedListener{destination ->
             if ( == )

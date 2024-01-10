@@ -3,6 +3,7 @@ package com.example.animalhandbook.Adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -16,12 +17,10 @@ import org.w3c.dom.Text
 //indicate who clicked (from which fragment). We set it in next method setOnItemClickListener()
 class AnimalAdapter :
     androidx.recyclerview.widget.ListAdapter<AnimalEntity, AnimalAdapter.ViewHolder>(AnimalDiffCallBack()) {
-
     interface onItemClickListener {
         fun onItemClick(name: String)
     }
     lateinit var myListener: onItemClickListener
-
 
     //Отже коли я викликаю об'єкт цього інтерфейсу, він знає (clickListener) інформацію з якого саме фрагменту я був викликаний
     fun setOnItemClickListener(clickListener: onItemClickListener) {
@@ -66,6 +65,23 @@ class AnimalAdapter :
         /*    if (item.type == "Artiodactyl")
             background.setBackgroundColor(itemView.resources.getColor(R.color.artodactyl, *//*itemView.resources*//*))*/
         }
+
+/*        fun getFilter(): Filter = animalFilter
+
+
+        private val animalFilter = object: Filter(){
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val filteredList: ArrayList<AnimalEntity> = ArrayList()
+                if (constraint.isNullOrEmpty()){
+                    var listttt = list
+                }
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                TODO("Not yet implemented")
+            }
+
+        }*/
 
     }
 

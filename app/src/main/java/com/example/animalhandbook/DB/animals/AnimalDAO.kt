@@ -25,5 +25,8 @@ interface AnimalDAO {
     @Query("SELECT * from animal_table where animal_type = :animalType")
     fun getAllAnimalByType(animalType: String): LiveData<List<AnimalEntity>>
 
+    @Query("SELECT * from animal_table where animal_name = :name")
+    fun searchAnimalByName(name: String): LiveData<List<AnimalEntity>>
+
 
 }
