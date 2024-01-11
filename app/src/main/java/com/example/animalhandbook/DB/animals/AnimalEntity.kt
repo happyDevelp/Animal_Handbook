@@ -19,5 +19,8 @@ data class AnimalEntity (
     val description: String,
 
     @ColumnInfo(name = "animal_pic_name")
-    val picName: String
+    val picName: String,
+
+    @ColumnInfo(name = "is_favourite")
+    val isFavourite: Boolean = false
 )

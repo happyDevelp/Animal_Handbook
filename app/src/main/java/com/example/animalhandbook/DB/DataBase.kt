@@ -11,7 +11,7 @@ import com.example.animalhandbook.DB.types.TypesDAO
 import com.example.animalhandbook.DB.types.TypesEntity
 
 
-@Database(entities = [TypesEntity::class, AnimalEntity::class], /*autoMigrations = [AutoMigration(from = 3, to = 4)],*/ version = 4, exportSchema = true)
+@Database(entities = [TypesEntity::class, AnimalEntity::class],/* autoMigrations = [AutoMigration(from = 4, to = 5)],*/ version = 5, exportSchema = true)
 abstract class DataBase : RoomDatabase() {
     abstract val typesDAO: TypesDAO
     abstract val animalDAO: AnimalDAO

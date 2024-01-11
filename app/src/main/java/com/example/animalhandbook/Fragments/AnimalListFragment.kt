@@ -27,8 +27,8 @@ class AnimalListFragment : Fragment() {
     private lateinit var binding: FragmentAnimalListBinding
     private lateinit var db: DataBase
     private val args: AnimalListFragmentArgs by navArgs()
-    lateinit var searchView: SearchView
-    lateinit var adapter: AnimalAdapter
+    private lateinit var searchView: SearchView
+    private lateinit var adapter: AnimalAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentAnimalListBinding.inflate(layoutInflater)
