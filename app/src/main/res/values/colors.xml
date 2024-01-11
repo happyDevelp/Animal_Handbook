@@ -7,5 +7,6 @@
     <color name="artodactyl_picture">#C7CDB3</color>
     <color name="tabBackgroundColor">#EEE</color>
     <color name="blue">#00F</color>
+    <color name="favourite">#BFF4511E</color>
 
 </resources>

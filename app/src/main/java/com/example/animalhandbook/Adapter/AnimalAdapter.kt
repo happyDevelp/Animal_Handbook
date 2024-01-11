@@ -44,7 +44,6 @@ class AnimalAdapter :
         private val name: TextView = itemView.findViewById(R.id.animal_name_inside)
         private val description: TextView = itemView.findViewById(R.id.animal_describe_inside)
         private val image: ImageView = itemView.findViewById(R.id.animal_image_inside)
-        private val background: CardView = itemView.findViewById(R.id.item_container)
 
         init {
             itemView.setOnClickListener {

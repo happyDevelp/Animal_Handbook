@@ -10,7 +10,6 @@
     >
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header_welcome"
         android:layout_width="match_parent"
@@ -98,7 +97,7 @@
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/amaranth"
             android:text="Category"
-            android:textSize="28dp"
+            android:textSize="28sp"
             app:layout_constraintBottom_toTopOf="@+id/recycleView_welcomeScreen"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -110,7 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="#0F3FEA10"
-
+            android:layout_marginHorizontal="4dp"
 
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -122,8 +121,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 
 
