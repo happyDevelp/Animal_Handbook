@@ -19,10 +19,15 @@ import kotlinx.coroutines.withContext
 class InsideAnimalFragment : Fragment() {
     private lateinit var binding: FragmentInsideAnimalBinding
     private lateinit var db: DataBase
+
     //AnimalListFragmentArgs this class generate automatically cuz I created an argument in navigation. Safe Args make everything instead of us
     private val args: InsideAnimalFragmentArgs by navArgs()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
         binding = FragmentInsideAnimalBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -31,28 +36,52 @@ class InsideAnimalFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val name = args.name
         db = DataBase.getInstance(requireContext())
+         firstSetupUI(name)
 
-
-        CoroutineScope(Dispatchers.Main).launch{
-            val currentAnimal = getAnimalByName(name)
-
-            binding.nameAnimalInside.text = currentAnimal.name
-            binding.describeAnimalInside.text = currentAnimal.description
-            val imageResource = resources.getIdentifier(currentAnimal.picName, "drawable", context?.packageName)
-            binding.imageAnimalInsideFragment.setImageResource(imageResource)
-
-        }
+        binding.imageStarState.setOnClickListener { starState(name) }
 
     }
 
+
+    private fun starState(name: String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            val currentAnimal = getAnimalByName(name)
+            if (!currentAnimal.isFavourite) {
+                setStarState(1, currentAnimal.name)
+                binding.imageStarState.setImageResource(R.drawable.star_fav)
+            } else {
+                setStarState(0, currentAnimal.name)
+                binding.imageStarState.setImageResource(R.drawable.star_notfav)
+            }
+        }
+    }
+
+    private fun firstSetupUI(name: String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            val currentAnimal = getAnimalByName(name)
+            binding.nameAnimalInside.text = currentAnimal.name
+            binding.describeAnimalInside.text = currentAnimal.description
+            val imageResource =
+                resources.getIdentifier(currentAnimal.picName, "drawable", context?.packageName)
+            binding.imageAnimalInsideFragment.setImageResource(imageResource)
+            binding.imageStarState.setImageResource(if (currentAnimal.isFavourite == true) R.drawable.star_fav else R.drawable.star_notfav)
+        }
+    }
+
     private suspend fun getAnimalByID(id: Int): AnimalEntity {
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             db.animalDAO.getAnimalByID(id)
         }
     }
 
+    private suspend fun setStarState(state: Int, name: String) {
+        return withContext(Dispatchers.IO) {
+            db.animalDAO.setStarState(state, name)
+        }
+    }
+
     private suspend fun getAnimalByName(name: String): AnimalEntity {
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             db.animalDAO.getAnimalByName(name)
         }
     }

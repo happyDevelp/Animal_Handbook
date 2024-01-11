@@ -22,5 +22,5 @@ data class AnimalEntity (
     val picName: String,
 
     @ColumnInfo(name = "is_favourite")
-    val isFavourite: Boolean = false
+    val isFavourite: Boolean
 )
