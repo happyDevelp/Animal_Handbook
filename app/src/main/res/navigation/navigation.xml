@@ -38,7 +38,11 @@
         android:id="@+id/favouritesFragment"
         android:name="com.example.animalhandbook.Fragments.Tab.FavouritesFragment"
         android:label="fragment_favourites"
-        tools:layout="@layout/fragment_favourites" />
+        tools:layout="@layout/fragment_favourites" >
+        <action
+            android:id="@+id/action_favouritesFragment_to_insideAnimalFragment"
+            app:destination="@id/insideAnimalFragment" />
+    </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.example.animalhandbook.Fragments.Tab.SettingsFragment"

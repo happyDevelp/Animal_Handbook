@@ -31,5 +31,6 @@ interface AnimalDAO {
     @Query("UPDATE animal_table set is_favourite = :state where animal_name = :name")
     fun setStarState(state: Int, name: String)
 
-
+    @Query("SELECT * FROM animal_table where is_favourite = :state")
+    fun getAllFavourite(state: Int): LiveData<List<AnimalEntity>>
 }

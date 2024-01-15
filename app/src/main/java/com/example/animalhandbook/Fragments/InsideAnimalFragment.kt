@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.example.animalhandbook.DB.DataBase
 import com.example.animalhandbook.DB.animals.AnimalEntity
@@ -49,6 +50,7 @@ class InsideAnimalFragment : Fragment() {
             if (!currentAnimal.isFavourite) {
                 setStarState(1, currentAnimal.name)
                 binding.imageStarState.setImageResource(R.drawable.star_fav)
+                Toast.makeText(requireContext(), "$name added to favourites", Toast.LENGTH_LONG).show()
             } else {
                 setStarState(0, currentAnimal.name)
                 binding.imageStarState.setImageResource(R.drawable.star_notfav)

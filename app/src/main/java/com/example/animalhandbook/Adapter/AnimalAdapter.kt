@@ -16,8 +16,7 @@ import com.example.animalhandbook.databinding.ItemAnimalListBinding
 import org.w3c.dom.Text
 
 //indicate who clicked (from which fragment). We set it in next method setOnItemClickListener()
-class AnimalAdapter :
-    androidx.recyclerview.widget.ListAdapter<AnimalEntity, AnimalAdapter.ViewHolder>(AnimalDiffCallBack()) {
+class AnimalAdapter : androidx.recyclerview.widget.ListAdapter<AnimalEntity, AnimalAdapter.ViewHolder>(AnimalDiffCallBack()) {
     interface onItemClickListener {
         fun onItemClick(name: String)
     }
@@ -25,14 +24,14 @@ class AnimalAdapter :
 
     //Отже коли я викликаю об'єкт цього інтерфейсу, він знає (clickListener) інформацію з якого саме фрагменту я був викликаний
     fun setOnItemClickListener(clickListener: onItemClickListener) {
-        myListener = clickListener
+        myListener = clickListener /*here I set anonymous object from AnimalListFragment to pass it in ViewHolder*/
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater.inflate(R.layout.item_animal_list, parent, false)
 
-        return ViewHolder(view, myListener)
+        return ViewHolder(view, myListener /*set anonymous object from AnimalListFragment to each element of RW. It means that each element of RW is listener (so element wait for a click)*/)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -62,26 +61,10 @@ class AnimalAdapter :
             val imageResource = itemView.resources.getIdentifier(item.picName, "drawable", itemView.context.packageName)
             image.setImageResource(imageResource)
 
+
         /*    if (item.type == "Artiodactyl")
             background.setBackgroundColor(itemView.resources.getColor(R.color.artodactyl, *//*itemView.resources*//*))*/
         }
-
-/*        fun getFilter(): Filter = animalFilter
-
-
-        private val animalFilter = object: Filter(){
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val filteredList: ArrayList<AnimalEntity> = ArrayList()
-                if (constraint.isNullOrEmpty()){
-                    var listttt = list
-                }
-            }
-
-            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                TODO("Not yet implemented")
-            }
-
-        }*/
 
     }
 
