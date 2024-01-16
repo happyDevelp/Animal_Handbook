@@ -5,5 +5,6 @@
 
     <string name="trim_text">%1$s… </string>
     <string name="search">Search</string>
+    <string name="text_aboutApp">animal Handbook - an encyclopedia in which you can find information about different animals from around the world. The application provides a system for adding animals to favorites. There is also a search by name.</string>
 
 </resources>
