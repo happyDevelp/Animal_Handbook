@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:id="@+id/scrollView_inside_animal"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollView_inside_animal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#2CBA5E17"
     android:fillViewport="true"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.0"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:context=".Fragments.InsideAnimalFragment">
@@ -23,7 +21,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="20">
+            android:layout_marginBottom="60dp"
+            android:layout_weight="1">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView_picture"
@@ -82,15 +81,15 @@
                 android:id="@+id/image_star_state"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                tools:src="@drawable/star_notfav"
                 android:layout_marginEnd="28dp"
-                android:padding="2dp"
                 android:background="?android:selectableItemBackgroundBorderless"
-
+                android:padding="2dp"
                 app:layout_constraintBottom_toTopOf="@+id/cardView_picture"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.578" />
+                app:layout_constraintVertical_bias="0.578"
+                tools:src="@drawable/star_notfav" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

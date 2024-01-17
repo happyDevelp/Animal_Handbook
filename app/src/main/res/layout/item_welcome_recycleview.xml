@@ -51,22 +51,23 @@
             tools:text="Predators" />
 
 
-
-
         <TextView
             android:id="@+id/description_of_animal_welcome"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_margin="8dp"
             android:fontFamily="@font/acme"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:layout_marginStart="8dp"
-            android:textSize="18sp"
+            android:textColor="#040202"
+
+
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/image_animal_welcome"
             app:layout_constraintTop_toBottomOf="@+id/name_of_animal_welcome"
-            tools:text="хижі звірі або хижаки - різноманітний ряд як сухопутних, так і морських ссавців, поширених майже по всьому світу. Ряд Хижs складається з підрядів псовидих і котовидих. 16 сучасних родин хижих містять близько 296 видів у 127 родах." />
+            tools:text="A carnivore is an organism that eats mostly meat, or the flesh of animals. Sometimes carnivores are called predators." />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

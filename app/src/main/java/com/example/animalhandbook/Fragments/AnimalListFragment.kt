@@ -66,12 +66,9 @@ class AnimalListFragment : Fragment() {
                     return true
                 }
 
-
             })
 
-
         }
-
 
     }
 

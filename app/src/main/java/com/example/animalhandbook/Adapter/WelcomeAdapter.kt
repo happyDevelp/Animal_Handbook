@@ -52,7 +52,10 @@ class WelcomeAdapter :
 
         fun bind(item: TypesEntity) {
             name.text = item.name
-            description.text = item.description
+            if (item.description.length >= 120){
+                description.text = itemView.resources.getString(R.string.trim_text, item.description.substring(0..120))
+            } else description.text = item.description
+
             val imageResource = itemView.resources.getIdentifier(item.picName, "drawable", itemView.context.packageName)
             image.setImageResource(imageResource)
 

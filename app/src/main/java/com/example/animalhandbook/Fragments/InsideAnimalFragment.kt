@@ -54,6 +54,7 @@ class InsideAnimalFragment : Fragment() {
             } else {
                 setStarState(0, currentAnimal.name)
                 binding.imageStarState.setImageResource(R.drawable.star_notfav)
+                Toast.makeText(requireContext(), "$name was removed from favourite", Toast.LENGTH_LONG).show()
             }
         }
     }

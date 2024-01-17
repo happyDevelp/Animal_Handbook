@@ -53,7 +53,7 @@ class AnimalAdapter : androidx.recyclerview.widget.ListAdapter<AnimalEntity, Ani
 
         fun bind(item: AnimalEntity) {
             name.text = item.name
-            if(item.description.length >= 50){
+            if(item.description.length >= 100){
                 val newDescription = itemView.resources.getString(R.string.trim_text, item.description.substring(0..100))
                 description.text = newDescription
             } else description.text = item.description
