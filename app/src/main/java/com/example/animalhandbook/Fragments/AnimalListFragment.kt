@@ -38,38 +38,44 @@ class AnimalListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         db = DataBase.getInstance(requireContext())
+
         adapter = AnimalAdapter()
         binding.recycleViewAnimal.adapter = adapter
+
+        setupOnItemClickListener(adapter)
+
+        searchView = binding.searchViewAnimalList
+        setupSearchListener()
 
         CoroutineScope(Dispatchers.Main).launch {
             val animalList = getAllAnimalByType(args.type)
             animalList.observe(viewLifecycleOwner) { adapter.submitList(it) }
-
-
-            adapter.setOnItemClickListener(object : AnimalAdapter.onItemClickListener{ //object : WelcomeAdapter.onItemClickListener - create anonymous object (створення анонімного об'єкту)
-                override fun onItemClick(name: String) {
-                    CoroutineScope(Dispatchers.Main).launch {
-                        findNavController().navigate(AnimalListFragmentDirections.actionAnimalListFragmentToInsideAnimalFragment(name))
-                    }
-                }
-
-            })
-
-            searchView = binding.searchViewAnimalList
-            searchView.setOnQueryTextListener(object : OnQueryTextListener{
-                override fun onQueryTextSubmit(query: String): Boolean {
-                    filterList(query)
-                    return false }
-
-                override fun onQueryTextChange(newText: String): Boolean {
-                    filterList(newText)
-                    return true
-                }
-
-            })
-
         }
 
+    }
+
+    private fun setupOnItemClickListener(adapter: AnimalAdapter) {
+        adapter.setOnItemClickListener(object : AnimalAdapter.onItemClickListener{ //object : WelcomeAdapter.onItemClickListener - create anonymous object (створення анонімного об'єкту)
+            override fun onItemClick(name: String) {
+                CoroutineScope(Dispatchers.Main).launch {
+                    findNavController().navigate(AnimalListFragmentDirections.actionAnimalListFragmentToInsideAnimalFragment(name))
+                }
+            }
+        })
+    }
+
+    private fun setupSearchListener() {
+        searchView.setOnQueryTextListener(object : OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String): Boolean {
+                filterList(query)
+                return false }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                filterList(newText)
+                return true
+            }
+
+        })
     }
 
     fun filterList(newText: String) {
@@ -79,19 +85,7 @@ class AnimalListFragment : Fragment() {
                 filteredList.add(animal)
             }
         }
-
-        if(filteredList.isEmpty()){
-            Toast.makeText(requireContext(), "No data found", Toast.LENGTH_SHORT).show()
-        }
-
-        else {adapter.submitList(filteredList)}
-    }
-
-
-    private suspend fun searchAnimalByName(name: String): LiveData<List<AnimalEntity>>{
-        return withContext(Dispatchers.IO) {
-            db.animalDAO.searchAnimalByName(name)
-        }
+         adapter.submitList(filteredList)
     }
 
     private suspend fun getAllAnimalByType(type: String): LiveData<List<AnimalEntity>> {
@@ -100,12 +94,4 @@ class AnimalListFragment : Fragment() {
         }
 
     }
-
-    private suspend fun getAnimalByID(id: Int): AnimalEntity {
-        return withContext(Dispatchers.IO) {
-            db.animalDAO.getAnimalByID(id)
-        }
-    }
-
-
 }

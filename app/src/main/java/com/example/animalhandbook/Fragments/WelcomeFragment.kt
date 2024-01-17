@@ -25,35 +25,33 @@ class WelcomeFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         db = DataBase.getInstance(requireContext())
 
+        val adapter = WelcomeAdapter()
+        binding.recycleViewWelcomeScreen.adapter = adapter
+
+        setupItemClickListener(adapter)
+
         CoroutineScope(Dispatchers.Main).launch {
             val typesList = getAllTypes()
-
-            val adapter = WelcomeAdapter()
-            binding.recycleViewWelcomeScreen.adapter = adapter
-
-
             typesList.observe(viewLifecycleOwner) { adapter.submitList(it) }
-
-                adapter.setOnItemClickListener(object : WelcomeAdapter.onItemClickListener{ //object : WelcomeAdapter.onItemClickListener - create anonymous object (створення анонімного об'єкту)
-                    override fun onItemClick(position: Int) {
-                        CoroutineScope(Dispatchers.Main).launch {
-
-                           val currentType = getTypeByID(position)
-                            findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToAnimalListFragment(currentType.name))
-
-                        }
-                    }
-
-            })
         }
 
     }
 
+    private fun setupItemClickListener(adapter: WelcomeAdapter){
+        adapter.setOnItemClickListener(object : WelcomeAdapter.onItemClickListener{ //object : WelcomeAdapter.onItemClickListener - create anonymous object (створення анонімного об'єкту)
+            override fun onItemClick(position: Int) {
+                CoroutineScope(Dispatchers.Main).launch {
+
+                    val currentType = getTypeByID(position)
+                    findNavController().navigate(WelcomeFragmentDirections.actionWelcomeFragmentToAnimalListFragment(currentType.name))
+                }
+            }
+        })
+    }
 
     private suspend fun getAllTypes(): LiveData<List<TypesEntity>> {
         return withContext(Dispatchers.IO) {
@@ -68,9 +66,4 @@ class WelcomeFragment : Fragment() {
     }
 
 
-    /* private suspend fun pushType(type: TypesEntity) {
-       return withContext(Dispatchers.IO) {
-           db.typesDAO.insertType(type)
-       }
-   }*/
 }

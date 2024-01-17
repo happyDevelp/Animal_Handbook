@@ -42,8 +42,6 @@ class FavouritesFragment : Fragment() {
         clickHandle(adapter)
         clickStarHandle(adapter)
 
-
-
     }
 
     private fun updateRW() {
@@ -54,10 +52,8 @@ class FavouritesFragment : Fragment() {
                 binding.apply {
                     if (animalList.value?.size == 0) textNoData.visibility = View.VISIBLE
                     else textNoData.visibility = View.INVISIBLE }
-
                 adapter.submitList(it)
             }
-
         }
     }
 

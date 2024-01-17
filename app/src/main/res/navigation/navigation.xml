@@ -20,7 +20,11 @@
         tools:layout="@layout/fragment_welcome" >
         <action
             android:id="@+id/action_welcomeFragment_to_animalListFragment"
-            app:destination="@id/animalListFragment" />
+            app:destination="@id/animalListFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/animalListFragment"
@@ -29,7 +33,11 @@
         tools:layout="@layout/fragment_animal_list" >
         <action
             android:id="@+id/action_animalListFragment_to_insideAnimalFragment"
-            app:destination="@id/insideAnimalFragment" />
+            app:destination="@id/insideAnimalFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <argument
             android:name="type"
             app:argType="string" />
@@ -41,7 +49,11 @@
         tools:layout="@layout/fragment_favourites" >
         <action
             android:id="@+id/action_favouritesFragment_to_insideAnimalFragment"
-            app:destination="@id/insideAnimalFragment" />
+            app:destination="@id/insideAnimalFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"

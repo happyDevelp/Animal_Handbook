@@ -67,15 +67,10 @@ class InsideAnimalFragment : Fragment() {
             val imageResource =
                 resources.getIdentifier(currentAnimal.picName, "drawable", context?.packageName)
             binding.imageAnimalInsideFragment.setImageResource(imageResource)
-            binding.imageStarState.setImageResource(if (currentAnimal.isFavourite == true) R.drawable.star_fav else R.drawable.star_notfav)
+            binding.imageStarState.setImageResource(if (currentAnimal.isFavourite) R.drawable.star_fav else R.drawable.star_notfav)
         }
     }
 
-    private suspend fun getAnimalByID(id: Int): AnimalEntity {
-        return withContext(Dispatchers.IO) {
-            db.animalDAO.getAnimalByID(id)
-        }
-    }
 
     private suspend fun setStarState(state: Int, name: String) {
         return withContext(Dispatchers.IO) {
@@ -88,6 +83,4 @@ class InsideAnimalFragment : Fragment() {
             db.animalDAO.getAnimalByName(name)
         }
     }
-
-
 }
