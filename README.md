@@ -71,6 +71,7 @@ OR
 ## Technologies Used
 
 - Kotlin
+- Android Jetpack Components 
 - Android Navigation Components
 - Kotlin Coroutines
 - Room Database
