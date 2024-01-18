@@ -41,11 +41,6 @@ it makes it possible to read descriptions of animals from all over the world. In
 
 
 
-*Share screen*
-
-<img src="https://github.com/happyDevelp/myQuiz/blob/master/app/src/androidTest/Readme_screenshots/share_menu.jpg" width="350" height="780">
-
-
 
 *Favourite screen*
 
