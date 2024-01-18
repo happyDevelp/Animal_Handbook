@@ -9,8 +9,9 @@ it makes it possible to read descriptions of animals from all over the world. In
 ## Features
 
 - **Convenient Search:** Search for animals by name
-- **Share Results:** Adding animals to favorites
+- **Favourites animals:** Adding animals to favorites
 - **Smooth Transitions:** Enjoy smooth animations between screen transitions.
+
 
 ## How to Use
 
